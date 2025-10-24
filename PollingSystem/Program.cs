@@ -341,11 +341,18 @@ void ParticipateSurvey(int userId)
             return;
         }
 
-        if (userSurveyService.HasUserSurvey(userId, surveyId))
+        var userSurvey = userSurveyService.GetUserSurvey(userId, surveyId);
+
+        if (userSurvey != null && userSurvey.Status == "Done")
         {
             AnsiConsole.MarkupLine("[red]You have already completed this survey.[/]");
             Console.ReadKey();
             return;
+        }
+
+        if (userSurvey == null)
+        {
+            userSurveyService.AddUserSurvey(userId, surveyId);
         }
 
         var questions = questionService.GetBySurveyId(surveyId);
