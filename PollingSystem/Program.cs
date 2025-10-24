@@ -242,7 +242,7 @@ void ViewSurveyResults(int adminId)
 
                 foreach (var opt in q.Options.OrderByDescending(o => o.VoteCount))
                 {
-                    string bar = new string('█', (int)opt.Percentage / 5);
+                    string bar = new string('*', (int)opt.Percentage / 5);
                     qTable.AddRow(opt.OptionText, opt.VoteCount.ToString(), $"{opt.Percentage:F1}% {bar}");
                 }
 
