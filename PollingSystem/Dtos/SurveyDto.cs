@@ -6,6 +6,5 @@
         public string? Title { get; set; }
         public string? AdminName { get; set; }
         public int TotalParticipants { get; set; }
-        public bool IsCompleted { get; set; }  
     }
 }
