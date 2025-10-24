@@ -41,12 +41,5 @@ namespace PollingSystem.Infrastructure.Repositories
                 .Distinct()
                 .ToList();
         }
-
-        public List<Vote> GetBySurveyId(int surveyId)
-        {
-            return _context.votes
-                .Where(v => v.SurveyId == surveyId)
-                .ToList();
-        }
     }
 }

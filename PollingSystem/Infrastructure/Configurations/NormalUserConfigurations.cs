@@ -13,9 +13,9 @@ namespace PollingSystem.Infrastructure.Configurations
                 .HasForeignKey(v => v.NormalUserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasMany(n => n.StatusSurveys)
-                .WithOne(u => u.User)
-                .HasForeignKey(u => u.UserId)
+            builder.HasMany(n => n.UserSurveys)
+                .WithOne(u => u.NormalUser)
+                .HasForeignKey(u => u.NormalUserId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

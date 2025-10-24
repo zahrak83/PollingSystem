@@ -17,7 +17,7 @@ namespace PollingSystem.Infrastructure.Repositories
         {
             var userSurvey = new UserSurvey
             {
-                UserId = userId,
+                NormalUserId = userId,
                 SurveyId = surveyId,
                 Status = status
             };
@@ -28,19 +28,19 @@ namespace PollingSystem.Infrastructure.Repositories
         public UserSurvey? getByUserSurvey(int userId, int surveyId)
         {
            return _context.usersurveys
-                .FirstOrDefault(us => us.UserId == userId && us.SurveyId == surveyId);
+                .FirstOrDefault(us => us.NormalUserId == userId && us.SurveyId == surveyId);
         }
 
         public bool HasUserSurvey(int userId, int surveyId)
         {
             return _context.usersurveys
-                .Any(us => us.UserId == userId && us.SurveyId == surveyId);
+                .Any(us => us.NormalUserId == userId && us.SurveyId == surveyId);
         }
 
         public void SetStatus(int userId, int surveyId, SurveyStatus Status)
         {
             var existing = _context.usersurveys
-                .FirstOrDefault(us => us.UserId == userId && us.SurveyId == surveyId);
+                .FirstOrDefault(us => us.NormalUserId == userId && us.SurveyId == surveyId);
             if (existing != null)
             {
                 existing.Status = Status;

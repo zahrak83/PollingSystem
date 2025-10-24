@@ -47,11 +47,12 @@ namespace PollingSystem.Services
         public UserSurveydto? GetUserSurvey(int userId, int surveyId)
         {
             var us = _userSurveyRepo.getByUserSurvey(userId, surveyId);
-            if (us == null) return null;
+            if (us == null)
+                return null;
 
             return new UserSurveydto
             {
-                UserId = us.UserId,
+                UserId = us.NormalUserId,
                 surveyId = us.SurveyId,
                 Status = us.Status.ToString()
             };

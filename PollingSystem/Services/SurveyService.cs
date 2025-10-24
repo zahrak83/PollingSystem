@@ -15,22 +15,6 @@ namespace PollingSystem.Services
             _voteRepo = voteRepo;
         }
 
-        public SurveyDto GetById(int id)
-        {
-            var s = _surveyRepo.GetById(id);
-
-            if (s == null)
-                throw new Exception("Survey not found.");
-
-            return new SurveyDto
-            {
-                Id = s.Id,
-                Title = s.Title,
-                AdminName = s.Admin.FullName,
-                TotalParticipants = _voteRepo.GetCountBySurveyId(s.Id)
-            };
-        }
-
         public List<SurveyDto> GetAll()
         {
             var surveys = _surveyRepo.GetAll();
@@ -48,10 +32,6 @@ namespace PollingSystem.Services
             return dtos;
         }
 
-        public bool HasVotes(int surveyId)
-        {
-            return _surveyRepo.HasVotes(surveyId);
-        }
     }
 }
 

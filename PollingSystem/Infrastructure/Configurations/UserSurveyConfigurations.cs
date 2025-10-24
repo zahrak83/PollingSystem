@@ -8,12 +8,12 @@ namespace PollingSystem.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<UserSurvey> builder)
         {
-            builder.HasIndex(us => new { us.UserId, us.SurveyId })
+            builder.HasIndex(us => new { us.NormalUserId, us.SurveyId })
                 .IsUnique();
 
-            builder.HasOne(us => us.User)
-                .WithMany(u => u.StatusSurveys)
-                .HasForeignKey(us => us.UserId)
+            builder.HasOne(us => us.NormalUser)
+                .WithMany(u => u.UserSurveys)
+                .HasForeignKey(us => us.NormalUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(us => us.Survey)

@@ -50,7 +50,8 @@ namespace PollingSystem.Services
 
                     var question = new Entities.Question 
                     { 
-                        Text = q.Text, SurveyId = survey.Id 
+                        Text = q.Text, 
+                        SurveyId = survey.Id 
                     };
 
                     _questionRepo.Add(question);

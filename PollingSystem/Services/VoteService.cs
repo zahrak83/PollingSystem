@@ -34,29 +34,6 @@ namespace PollingSystem.Services
                 throw new Exception($"Add vote error: {ex.Message}");
             }
         }
-
-        public int CountVotesByOption(int optionId)
-        {
-            try
-            {
-                return _voteRepo.GetCountByOptionId(optionId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Count votes error: {ex.Message}");
-            }
-        }
-
-        public bool HasUserVoted(int userId, int surveyId)
-        {
-            var votes = _voteRepo.GetBySurveyId(surveyId);
-            foreach (var v in votes)
-            {
-                if (v.NormalUserId == userId)
-                    return true;
-            }
-            return false;
-        }
     }
 }
 

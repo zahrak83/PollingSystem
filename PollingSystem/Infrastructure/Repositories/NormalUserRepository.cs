@@ -16,7 +16,7 @@ namespace PollingSystem.Infrastructure.Repositories
         {
             return _context.normalusers
                 .Include(u => u.Votes)
-                .Include(u => u.StatusSurveys)
+                .Include(u => u.UserSurveys)
                 .FirstOrDefault(u => u.Username == username && u.Password == password);
         }
     }
